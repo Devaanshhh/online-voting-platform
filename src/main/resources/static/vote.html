@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Cast Vote</title>
+
+<link rel="icon" href="data:,">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    background:#f4f7fb;
+    font-family:'Poppins',sans-serif;
+}
+
+.card{
+    border:none;
+    border-radius:18px;
+}
+
+.btn{
+    border-radius:25px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-dark bg-danger shadow">
+
+<div class="container">
+
+<span class="navbar-brand fw-bold fs-4">
+
+🗳 Cast Vote
+
+</span>
+
+</div>
+
+</nav>
+
+<div class="container mt-5">
+
+<div class="card shadow-lg p-4">
+
+<h3 class="text-center mb-4">
+
+<i class="bi bi-check2-square text-danger"></i>
+
+Vote for Your Candidate
+
+</h3>
+
+<div class="mb-3">
+
+<label class="form-label fw-semibold">
+
+Select Voter
+
+</label>
+
+<select
+id="voter"
+class="form-select">
+
+</select>
+
+</div>
+
+<div class="mb-4">
+
+<label class="form-label fw-semibold">
+
+Select Candidate
+
+</label>
+
+<select
+id="candidate"
+class="form-select">
+
+</select>
+
+</div>
+
+<button
+class="btn btn-danger w-100"
+onclick="castVote()">
+
+<i class="bi bi-check-circle-fill"></i>
+
+Cast Vote
+
+</button>
+
+<div
+id="result"
+class="mt-4 text-center fw-bold">
+
+</div>
+
+</div>
+
+<div class="text-center mt-4">
+
+<a href="dashboard.html" class="btn btn-secondary">
+
+⬅ Back to Dashboard
+
+</a>
+
+</div>
+
+<footer class="text-center text-muted mt-5">
+
+<hr>
+
+© 2026 Online Voting Platform
+
+</footer>
+
+</div>
+
+<script src="js/vote.js"></script>
+
+</body>
+
+</html>

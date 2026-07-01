@@ -1,5 +1,6 @@
 package com.voting.controller;
 
+import jakarta.validation.Valid;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import com.voting.entity.Candidate;
 import com.voting.repository.CandidateRepository;
-
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 @RestController
 @RequestMapping("/candidate")
 public class CandidateController {
@@ -16,36 +18,42 @@ public class CandidateController {
     private CandidateRepository candidateRepository;
 
     @PostMapping
-    public Candidate addCandidate(@RequestBody Candidate candidate) {
-        return candidateRepository.save(candidate);
+    public ResponseEntity<Candidate> addCandidate(@Valid @RequestBody Candidate candidate) {
+
+        Candidate saved = candidateRepository.save(candidate);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 
     @GetMapping
-    public List<Candidate> getAllCandidates() {
-        return candidateRepository.findAll();
+    public ResponseEntity<List<Candidate>> getAllCandidates() {
+        return ResponseEntity.ok(candidateRepository.findAll());
     }
+
     @DeleteMapping("/{id}")
-    public String deleteCandidate(@PathVariable Long id) {
+    public ResponseEntity<String> deleteCandidate(@PathVariable Long id) {
 
         candidateRepository.deleteById(id);
 
-        return "Candidate Deleted Successfully";
+        return ResponseEntity.ok("Candidate Deleted Successfully");
     }
+
     @PutMapping("/{id}")
-    public Candidate updateCandidate(@PathVariable Long id,
-                                     @RequestBody Candidate updatedCandidate) {
+    public ResponseEntity<Candidate> updateCandidate(@PathVariable Long id,
+                                                     @RequestBody Candidate updatedCandidate) {
 
         Candidate candidate = candidateRepository.findById(id)
                 .orElse(null);
 
         if (candidate == null) {
-            return null;
+            return ResponseEntity.notFound().build();
         }
 
         candidate.setCandidateName(updatedCandidate.getCandidateName());
         candidate.setParty(updatedCandidate.getParty());
 
-        return candidateRepository.save(candidate);
+        Candidate savedCandidate = candidateRepository.save(candidate);
+
+        return ResponseEntity.ok(savedCandidate);
     }
-    
 }

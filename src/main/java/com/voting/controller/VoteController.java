@@ -1,49 +1,53 @@
 package com.voting.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.voting.entity.Candidate;
-import com.voting.entity.Voter;
-import com.voting.repository.CandidateRepository;
-import com.voting.repository.VoterRepository;
+import com.voting.entity.Vote;
+import com.voting.service.VoteService;
 
 @RestController
 @RequestMapping("/vote")
 public class VoteController {
 
     @Autowired
-    private VoterRepository voterRepository;
-
-    @Autowired
-    private CandidateRepository candidateRepository;
+    private VoteService voteService;
 
     @PostMapping("/{voterId}/{candidateId}")
-    public String castVote(@PathVariable Long voterId,
-                           @PathVariable Long candidateId) {
+    public ResponseEntity<String> castVote(@PathVariable Long voterId,
+                                           @PathVariable Long candidateId) {
 
-        Voter voter = voterRepository.findById(voterId).orElse(null);
+        return ResponseEntity.ok(voteService.castVote(voterId, candidateId));
+    }
 
-        if (voter == null) {
-            return "Voter not found";
-        }
+    @GetMapping
+    public ResponseEntity<List<Vote>> getAllVotes() {
 
-        if (voter.isVoted()) {
-            return "You have already voted";
-        }
+        return ResponseEntity.ok(voteService.getAllVotes());
 
-        Candidate candidate = candidateRepository.findById(candidateId).orElse(null);
+    }
 
-        if (candidate == null) {
-            return "Candidate not found";
-        }
+    @GetMapping("/{id}")
+    public ResponseEntity<Vote> getVoteById(@PathVariable Long id) {
 
-        candidate.setVotes(candidate.getVotes() + 1);
-        voter.setVoted(true);
+        return ResponseEntity.ok(voteService.getVoteById(id));
 
-        candidateRepository.save(candidate);
-        voterRepository.save(voter);
+    }
 
-        return "Vote cast successfully";
+    @GetMapping("/voter/{voterId}")
+    public ResponseEntity<List<Vote>> getVotesByVoter(@PathVariable Long voterId) {
+
+        return ResponseEntity.ok(voteService.getVotesByVoter(voterId));
+
+    }
+
+    @GetMapping("/candidate/{candidateId}")
+    public ResponseEntity<List<Vote>> getVotesByCandidate(@PathVariable Long candidateId) {
+
+        return ResponseEntity.ok(voteService.getVotesByCandidate(candidateId));
+
     }
 }

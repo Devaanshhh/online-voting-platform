@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Dashboard</title>
+
+<link rel="icon" href="data:,">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    background:#f4f7fb;
+    font-family:'Poppins',sans-serif;
+}
+
+.navbar{
+    background:linear-gradient(90deg,#0d6efd,#6610f2);
+}
+
+.card{
+    border:none;
+    border-radius:18px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
+}
+
+.display-4{
+    font-size:55px;
+}
+
+.btn{
+    border-radius:30px;
+}
+
+footer{
+    color:gray;
+    margin-top:60px;
+    text-align:center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-dark shadow-lg">
+
+<div class="container">
+
+<span class="navbar-brand fs-3 fw-bold">
+
+🗳 Online Voting Platform
+
+</span>
+
+</div>
+
+</nav>
+
+<div class="container mt-5">
+
+<h1 class="text-center fw-bold">
+
+Welcome Admin
+
+</h1>
+
+<p class="text-center text-muted mb-5">
+
+Manage the complete online election system from one dashboard.
+
+</p>
+
+<div class="row g-4">
+
+<div class="col-lg-4">
+
+<div class="card text-center p-4 h-100">
+
+<i class="bi bi-people-fill display-4 text-primary"></i>
+
+<h4 class="mt-3">Manage Voters</h4>
+
+<p class="text-muted">
+Register and manage voters.
+</p>
+
+<a href="voter.html" class="btn btn-primary">
+Open
+</a>
+
+</div>
+
+</div>
+
+<div class="col-lg-4">
+
+<div class="card text-center p-4 h-100">
+
+<i class="bi bi-person-badge-fill display-4 text-success"></i>
+
+<h4 class="mt-3">Manage Candidates</h4>
+
+<p class="text-muted">
+Add or update candidates.
+</p>
+
+<a href="candidate.html" class="btn btn-success">
+Open
+</a>
+
+</div>
+
+</div>
+
+<div class="col-lg-4">
+
+<div class="card text-center p-4 h-100">
+
+<i class="bi bi-check2-square display-4 text-danger"></i>
+
+<h4 class="mt-3">Cast Vote</h4>
+
+<p class="text-muted">
+Vote for your preferred candidate.
+</p>
+
+<a href="vote.html" class="btn btn-danger">
+Vote Now
+</a>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<div class="card text-center p-4 h-100">
+
+<i class="bi bi-clock-history display-4 text-warning"></i>
+
+<h4 class="mt-3">Vote History</h4>
+
+<p class="text-muted">
+View all voting records.
+</p>
+
+<a href="history.html" class="btn btn-warning">
+View History
+</a>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<div class="card text-center p-4 h-100">
+
+<i class="bi bi-trophy-fill display-4 text-info"></i>
+
+<h4 class="mt-3">Election Winner</h4>
+
+<p class="text-muted">
+See the candidate with the highest votes.
+</p>
+
+<a href="winner.html" class="btn btn-info">
+View Winner
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+<hr>
+
+© 2026 Online Voting Platform | Spring Boot • PostgreSQL • Bootstrap
+
+</footer>
+
+</div>
+
+</body>
+
+</html>

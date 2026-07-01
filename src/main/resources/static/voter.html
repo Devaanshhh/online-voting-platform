@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Voter Management</title>
+
+<link rel="icon" href="data:,">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    background:#f4f7fb;
+    font-family:'Poppins',sans-serif;
+}
+
+.card{
+    border:none;
+    border-radius:18px;
+}
+
+.btn{
+    border-radius:25px;
+}
+
+table{
+    background:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-dark bg-primary shadow">
+
+<div class="container">
+
+<span class="navbar-brand fw-bold fs-4">
+
+👤 Voter Management
+
+</span>
+
+</div>
+
+</nav>
+
+<div class="container mt-5">
+
+<div class="card shadow-lg p-4">
+
+<h3 class="text-center mb-4">
+
+<i class="bi bi-person-plus-fill text-primary"></i>
+
+Register New Voter
+
+</h3>
+
+<div class="mb-3">
+
+<label class="form-label fw-semibold">
+
+Full Name
+
+</label>
+
+<input
+id="name"
+class="form-control"
+placeholder="Enter full name">
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label fw-semibold">
+
+Email Address
+
+</label>
+
+<input
+id="email"
+class="form-control"
+placeholder="Enter email">
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label fw-semibold">
+
+Voter ID
+
+</label>
+
+<input
+id="voterId"
+class="form-control"
+placeholder="Enter voter ID">
+
+</div>
+
+<div class="mb-4">
+
+<label class="form-label fw-semibold">
+
+Password
+
+</label>
+
+<input
+type="password"
+id="password"
+class="form-control"
+placeholder="Enter password">
+
+</div>
+
+<button
+class="btn btn-primary w-100"
+onclick="registerVoter()">
+
+<i class="bi bi-person-plus"></i>
+
+Register Voter
+
+</button>
+
+</div>
+
+<div class="card shadow-lg mt-5">
+
+<div class="card-header bg-dark text-white">
+
+<h5 class="mb-0">
+
+<i class="bi bi-people-fill"></i>
+
+Registered Voters
+
+</h5>
+
+</div>
+
+<div class="card-body">
+
+<table class="table table-striped table-hover align-middle">
+
+<thead class="table-primary">
+
+<tr>
+
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Voter ID</th>
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody id="voterTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<div class="text-center mt-4">
+
+<a href="dashboard.html" class="btn btn-secondary">
+
+⬅ Back to Dashboard
+
+</a>
+
+</div>
+
+<footer class="text-center text-muted mt-5">
+
+<hr>
+
+© 2026 Online Voting Platform
+
+</footer>
+
+</div>
+
+<script src="js/voter.js"></script>
+
+</body>
+
+</html>

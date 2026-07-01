@@ -1,7 +1,8 @@
 package com.voting.entity;
 
 import jakarta.persistence.*;
-
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 @Entity
 @Table(name = "candidates")
 public class Candidate {
@@ -10,8 +11,11 @@ public class Candidate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Candidate name is required")
+    @Size(min = 3, max = 50, message = "Candidate name must be between 3 and 50 characters")
     private String candidateName;
 
+    @NotBlank(message = "Party name is required")
     private String party;
 
     private int votes;
