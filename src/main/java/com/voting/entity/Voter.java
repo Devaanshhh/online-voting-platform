@@ -19,9 +19,11 @@ public class Voter {
 
     @NotBlank(message = "Email is required")
     @Email(message = "Enter a valid email address")
+    @Column(unique = true, nullable = false)
     private String email;
 
     @NotBlank(message = "Voter ID is required")
+    @Column(name = "voter_id", unique = true, nullable = false)
     private String voterId;
 
     @NotBlank(message = "Password is required")

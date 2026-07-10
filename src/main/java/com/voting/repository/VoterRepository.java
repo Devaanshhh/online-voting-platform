@@ -10,4 +10,8 @@ public interface VoterRepository extends JpaRepository<Voter, Long> {
 
     Optional<Voter> findByVoterId(String voterId);
 
+    boolean existsByVoterId(String voterId);
+
+    boolean existsByEmail(String email);
+
 }

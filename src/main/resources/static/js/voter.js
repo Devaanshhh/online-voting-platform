@@ -40,46 +40,68 @@ document.getElementById("voterTable").innerHTML=rows;
 
 }
 
-function registerVoter(){
+function registerVoter() {
 
-const voter={
+    const voter = {
 
-name:document.getElementById("name").value,
+        name: document.getElementById("name").value,
 
-email:document.getElementById("email").value,
+        email: document.getElementById("email").value,
 
-voterId:document.getElementById("voterId").value,
+        voterId: document.getElementById("voterId").value,
 
-password:document.getElementById("password").value
+        password: document.getElementById("password").value
 
-};
+    };
 
-fetch(BASE_URL+"/voter/register",{
+    fetch(BASE_URL + "/voter/register", {
 
-method:"POST",
+        method: "POST",
 
-headers:{
+        headers: {
 
-"Content-Type":"application/json"
+            "Content-Type": "application/json"
 
-},
+        },
 
-body:JSON.stringify(voter)
+        body: JSON.stringify(voter)
 
-})
+    })
 
-.then(()=>{
+    .then(async response => {
 
-document.getElementById("name").value="";
+        const data = await response.json();
 
-document.getElementById("email").value="";
+        if (!response.ok) {
 
-document.getElementById("voterId").value="";
+            throw new Error(data.message);
 
-document.getElementById("password").value="";
+        }
 
-loadVoters();
+        return data;
 
-});
+    })
+
+    .then(() => {
+
+        alert("Voter registered successfully!");
+
+        document.getElementById("name").value = "";
+
+        document.getElementById("email").value = "";
+
+        document.getElementById("voterId").value = "";
+
+        document.getElementById("password").value = "";
+
+        loadVoters();
+
+    })
+
+    .catch(error => {
+
+        alert(error.message);
+
+    });
 
 }

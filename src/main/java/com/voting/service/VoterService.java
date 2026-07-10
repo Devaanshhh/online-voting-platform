@@ -20,6 +20,15 @@ public class VoterService {
 
         voter.setPassword(passwordEncoder.encode(voter.getPassword()));
 
+        if (voterRepository.existsByEmail(voter.getEmail())) {
+            throw new RuntimeException("Email already exists");
+        }
+
+        if (voterRepository.existsByVoterId(voter.getVoterId())) {
+            throw new RuntimeException("Voter ID already exists");
+        }
+
         return voterRepository.save(voter);
+     
     }
 }
